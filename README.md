@@ -120,19 +120,8 @@ cd gold-sentiment-index-main
 > If you just downloaded a ZIP from GitHub, unzip it and `cd` into the project
 > folder instead.
 
-### 2. Create and activate a virtual environment
 
-Using `venv` (Python built-in):
-
-```bash
-python -m venv .venv
-# On Windows (PowerShell):
-.\.venv\Scripts\Activate.ps1
-# On macOS / Linux (bash / zsh):
-source .venv/bin/activate
-```
-
-### 3. Install Python dependencies
+### 2. Install Python dependencies
 
 From inside the project folder with the virtualenv activated:
 
@@ -498,4 +487,5 @@ For now, the core path is:
 4. Open `dashboard.html`.
 
 That’s all you need to get from raw macro/gold headlines to a visual Gold
+
 Sentiment Index.
