@@ -1,4 +1,3 @@
-twikit
 requests
 torch
 transformers

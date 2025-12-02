@@ -12,7 +12,6 @@ load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NEWS_JSON_PATH = PROJECT_ROOT / "news.json"
-NEW_NEWS_JSON_PATH = PROJECT_ROOT / "news_new.json"
 
 # Queries tilted toward gold + macro/politics, split to stay under NewsAPI's
 # 500-character limit for the q parameter. We call both and merge results.
@@ -342,12 +341,7 @@ def run_cli() -> None:
     merged = list(existing_by_url.values())
     save_news_to_json(merged, NEWS_JSON_PATH)
 
-    # Also write a file with just the newly discovered articles for this run.
-    new_articles = [a for a in fetched if a.get("url") in {u for u, a0 in existing_by_url.items() if u not in {e.get("url") for e in existing}}]
-    NEW_NEWS_JSON_PATH.write_text(
-        json.dumps(new_articles, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
-
+    # Log a short summary for this run.
     print(f"NewsAPI: {len(fetched)} fetched, {new_count} new, {len(merged)} total stored.")
 
 
@@ -396,4 +390,5 @@ def run_backfill_cli(total_days: int = 30, window_days: int = 3) -> None:
 
 
 if __name__ == "__main__":  # Manual testing
+    # Run a single incremental update when executed directly.
     run_cli()
