@@ -136,7 +136,6 @@ This will install PyTorch, Transformers, and the helper libraries.
 ## API keys & configuration
 
 The **only API key** required for this project is the **NewsAPI key**.
-There are **no Twitter keys or other secrets** used by the pipeline.
 
 ### 1. Get a NewsAPI key
 
@@ -489,3 +488,4 @@ For now, the core path is:
 That’s all you need to get from raw macro/gold headlines to a visual Gold
 
 Sentiment Index.
+
