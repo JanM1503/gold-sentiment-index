@@ -139,8 +139,8 @@ def generate_dashboard() -> None:
       ctx.clearRect(0, 0, W, H);
 
       // Background bands: Extreme Fear, Fear, Neutral, Greed, Extreme Greed
-      drawBand(0, 25,  '#fee2e2');  // light red
-      drawBand(25, 45, '#fed7aa');  // orange
+      drawBand(0, 25,  '#ff0000');  //  red
+      drawBand(25, 45, '#fee2e2');  // light red
       drawBand(45, 55, '#e5e7eb');  // gray
       drawBand(55, 75, '#bbf7d0');  // light green
       drawBand(75, 100,'#22c55e');  // green
