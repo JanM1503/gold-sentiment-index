@@ -67,18 +67,18 @@ def generate_dashboard() -> None:
 </head>
 <body>
   <h1>Gold Sentiment Index (GSI)</h1>
-  <p class=\"subtitle\">News-driven gold sentiment, scaled 0–100 (Extreme Fear → Extreme Greed).</p>
+  <p class=\"subtitle\">News-driven gold sentiment, scaled 0–100 (Extremely Bearish → Extremely Bullish).</p>
 
   <div class=\"card\">
     <div class=\"gauge-wrapper\">
       <canvas id=\"gaugeChart\" width=\"540\" height=\"280\"></canvas>
     </div>
     <div class=\"bands\">
-      <span>Extreme Fear<br/>0–25</span>
-      <span>Fear<br/>25–45</span>
+      <span>Extreme Bearish<br/>0–25</span>
+      <span>Bearish<br/>25–45</span>
       <span>Neutral<br/>45–55</span>
-      <span>Greed<br/>55–75</span>
-      <span>Extreme Greed<br/>75–100</span>
+      <span>Bullish<br/>55–75</span>
+      <span>Extreme Bullish<br/>75–100</span>
     </div>
     <div class=\"gauge-value\" id=\"gaugeValue\">{latest_gsi:.0f}</div>
     <div class=\"gauge-label\" id=\"gaugeLabel\">{latest_class}</div>
@@ -138,8 +138,8 @@ def generate_dashboard() -> None:
     function drawGauge(value) {{
       ctx.clearRect(0, 0, W, H);
 
-      // Background bands: Extreme Fear, Fear, Neutral, Greed, Extreme Greed
-      drawBand(0, 25,  '#ff0000');  // red
+      // Background bands: Extreme Bearish, Bearish, Neutral, Bullish, Extreme Bullish
+      drawBand(0, 25,  '#ff0000');  //  red
       drawBand(25, 45, '#fee2e2');  // light red
       drawBand(45, 55, '#e5e7eb');  // gray
       drawBand(55, 75, '#bbf7d0');  // light green
@@ -185,4 +185,3 @@ def generate_dashboard() -> None:
 
 if __name__ == "__main__":
     generate_dashboard()
-

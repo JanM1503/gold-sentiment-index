@@ -3,9 +3,9 @@
 The **Gold Sentiment Index (GSI)** is a small research project that turns
 financial and macro news into a single **0–100 sentiment index** for gold:
 
-- **0 = Extreme Fear** about gold
+- **0 = Extremely Bearish** about gold
 - **50 = Neutral**
-- **100 = Extreme Greed** / very bullish tone
+- **100 = Extremely Bullish** / very bullish tone
 
 It does this by:
 
@@ -50,19 +50,19 @@ Main files and what they do:
   - Maps raw scores into both:
     - `nw`  – net sentiment in [-1, 1]
     - `nw_norm` / `gsi` – the index in [0, 100]
-  - Classifies the index into 5 regimes:
-    - 0–25   → Extreme Fear
-    - 25–45  → Fear
+- Classifies the index into 5 regimes:
+    - 0–25   → Extremely Bearish
+    - 25–45  → Bearish
     - 45–55  → Neutral
-    - 55–75  → Greed
-    - 75–100 → Extreme Greed
+    - 55–75  → Bullish
+    - 75–100 → Extremely Bullish
 
 - `processing/dashboard.py`
   - Reads `sentiment_results.json`.
-  - Generates an **interactive HTML dashboard** at `dashboard.html` with:
+- Generates an **interactive HTML dashboard** at `dashboard.html` with:
     - A custom gauge (0–100) colored by regime bands.
     - Current numerical GSI value.
-    - Current regime label (Extreme Fear / Greed etc.).
+    - Current regime label (Extremely Bearish / Bearish / Neutral / Bullish / Extremely Bullish).
     - Timestamp of the last update.
 
 - `models/finbert_gold.py`
@@ -265,11 +265,11 @@ Open it in your browser:
 The dashboard shows:
 
 - A **gauge** from 0 to 100 with color bands:
-  - Extreme Fear (0–25): red
-  - Fear (25–45): light red
+  - Extremely Bearish (0–25): red
+  - Bearish (25–45): light red
   - Neutral (45–55): gray
-  - Greed (55–75): light green
-  - Extreme Greed (75–100): green
+  - Bullish (55–75): light green
+  - Extremely Bullish (75–100): green
 - The **current GSI value** (rounded integer) below the gauge.
 - The **classification label** (e.g., "Greed").
 - The **last updated timestamp** (converted to your local time zone).
@@ -379,18 +379,18 @@ Given all article-level scores and weights, it:
 
 4. Maps the resulting `gsi` value into a **regime label**:
 
-   - `< 25`  → "Extreme Fear"
-   - `< 45`  → "Fear"
+   - `< 25`  → "Extremely Bearish"
+   - `< 45`  → "Bearish"
    - `< 55`  → "Neutral"
-   - `< 75`  → "Greed"
-   - `>= 75` → "Extreme Greed"
+   - `< 75`  → "Bullish"
+   - `>= 75` → "Extremely Bullish"
 
 The final output is packaged as `IndexComponents` with:
 
 - `nw`      – net sentiment in [-1, 1]
 - `nw_norm` – normalized to [0, 100]
 - `gsi`     – alias for `nw_norm`
-- `classification` – the regime label
+- `classification` – the regime label (Extremely Bearish / Bearish / Neutral / Bullish / Extremely Bullish)
 
 ### 4. Result packaging and dashboard (`processing/sentiment.py` & `processing/dashboard.py`)
 
@@ -405,8 +405,8 @@ The final output is packaged as `IndexComponents` with:
   - Reads `sentiment_results.json`.
   - Generates `dashboard.html` with an embedded `<canvas>` and custom drawing
     code (no backend server required).
-  - Draws:
-    - The background bands (Extreme Fear → Extreme Greed).
+- Draws:
+    - The background bands (Extremely Bearish → Extremely Bullish).
     - A needle at the current GSI value.
     - Numeric value and regime text.
     - Last-updated time in local format.

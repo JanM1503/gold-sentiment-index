@@ -50,24 +50,24 @@ def _avg_scores(
 
 
 def _classify_gsi(gsi: float) -> str:
-    """Map GSI value into Fear/Greed-style regime buckets.
+    """Map GSI value into sentiment regime buckets.
 
-    0–25   = Extreme Fear
-    25–45  = Fear
+    0–25   = Extremely Bearish
+    25–45  = Bearish
     45–55  = Neutral
-    55–75  = Greed
-    75–100 = Extreme Greed
+    55–75  = Bullish
+    75–100 = Extremely Bullish
     """
 
     if gsi < 25:
-        return "Extreme Fear"
+        return "Extremely Bearish"
     if gsi < 45:
-        return "Fear"
+        return "Bearish"
     if gsi < 55:
         return "Neutral"
     if gsi < 75:
-        return "Greed"
-    return "Extreme Greed"
+        return "Bullish"
+    return "Extremely Bullish"
 
 
 def compute_index(
