@@ -98,6 +98,7 @@ Main files and what they do:
   - `numpy`
   - `python-dotenv`
   - `peft`
+  - `pytz`
 
 You will also need:
 
@@ -127,9 +128,11 @@ From inside the project folder with the virtualenv activated:
 
 ```bash
 pip install -r requirements.txt
+# or, equivalently (explicit):
+# pip install requests torch transformers pandas numpy python-dotenv peft pytz
 ```
 
-This will install PyTorch, Transformers, and the helper libraries.
+This will install PyTorch, Transformers, `pytz`, and the helper libraries.
 
 ---
 
@@ -182,6 +185,10 @@ From the project root (with your virtualenv active):
 python run.py sentiment update
 ```
 
+> Note: the FinBERT sentiment step can take from a few seconds up to a few
+> minutes, depending on how many articles are in `news.json` and how fast your
+> CPU/GPU is (first run is usually slower because the model is downloaded).
+
 ### CLI commands
 
 `run.py` supports three subcommands:
@@ -219,6 +226,16 @@ python run.py sentiment update
    - Produces `sentiment_results.json`, `gsi_value.json`.
    - Regenerates `dashboard.html`.
 
+4. **Redraw dashboard only (no new analysis)**
+
+   ```bash
+   python run.py sentiment dashboard
+   ```
+
+   - Does **not** fetch new data.
+   - Does **not** rerun FinBERT.
+   - Simply regenerates `dashboard.html` from the latest `sentiment_results.json`.
+
 This is useful if you want to:
 
 - Avoid hitting the NewsAPI quota repeatedly.
@@ -248,11 +265,11 @@ Open it in your browser:
 The dashboard shows:
 
 - A **gauge** from 0 to 100 with color bands:
-  - Extreme Fear (0–25): deep red
-  - Fear (25–45): orange
+  - Extreme Fear (0–25): red
+  - Fear (25–45): light red
   - Neutral (45–55): gray
   - Greed (55–75): light green
-  - Extreme Greed (75–100): bright green
+  - Extreme Greed (75–100): green
 - The **current GSI value** (rounded integer) below the gauge.
 - The **classification label** (e.g., "Greed").
 - The **last updated timestamp** (converted to your local time zone).
@@ -488,4 +505,5 @@ For now, the core path is:
 That’s all you need to get from raw macro/gold headlines to a visual Gold
 
 Sentiment Index.
+
 

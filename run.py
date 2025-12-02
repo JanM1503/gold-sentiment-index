@@ -12,9 +12,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 
 
 USAGE = """Usage:
-  python run.py sentiment update    # fetch NewsAPI, analyze, update JSON + dashboard
-  python run.py sentiment news      # fetch NewsAPI only
-  python run.py sentiment analyze   # run FinBERT on existing news.json
+  python run.py sentiment update     # fetch NewsAPI, analyze, update JSON + dashboard
+  python run.py sentiment news       # fetch NewsAPI only
+  python run.py sentiment analyze    # run FinBERT on existing news.json + update dashboard
+  python run.py sentiment dashboard  # regenerate dashboard.html from existing sentiment_results.json
 """
 
 
@@ -34,6 +35,15 @@ def cmd_analyze() -> None:
     generate_dashboard()
 
 
+def cmd_dashboard_only() -> None:
+    """Regenerate dashboard.html from the latest sentiment_results.json.
+
+    This does NOT fetch new data or rerun FinBERT; it only redraws the gauge
+    using whatever is currently stored in sentiment_results.json.
+    """
+
+    generate_dashboard()
+
 
 def main(argv: list[str] | None = None) -> None:
     if argv is None:
@@ -50,6 +60,8 @@ def main(argv: list[str] | None = None) -> None:
         cmd_news()
     elif sub == "analyze":
         cmd_analyze()
+    elif sub == "dashboard":
+        cmd_dashboard_only()
     else:
         print(USAGE)
 
