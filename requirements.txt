@@ -1,0 +1,8 @@
+twikit
+requests
+torch
+transformers
+pandas
+numpy
+python-dotenv
+peft
