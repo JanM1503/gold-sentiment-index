@@ -504,3 +504,4 @@ visuellen Gold Sentiment Index zu gelangen.
 
 
 ```
+
