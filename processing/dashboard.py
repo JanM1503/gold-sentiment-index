@@ -46,8 +46,8 @@ def generate_dashboard() -> None:
   <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>
   <style>
     body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 30px; background: #f3f4f6; }}
-    h1 {{ margin-bottom: 0.4rem; }}
-    .subtitle {{ color: #4b5563; margin-bottom: 2rem; }}
+    h1 {{ margin-bottom: 0.4rem; text-align: center; }}
+    .subtitle {{ color: #4b5563; margin-bottom: 2rem; text-align: center; }}
 .card {{ max-width: 640px; margin: 0 auto; box-shadow: 0 8px 20px rgba(15,23,42,0.12); padding: 30px 30px 40px; border-radius: 18px; background: #ffffff; }}
     .gauge-wrapper {{
       position: relative;
@@ -185,3 +185,4 @@ def generate_dashboard() -> None:
 
 if __name__ == "__main__":
     generate_dashboard()
+
