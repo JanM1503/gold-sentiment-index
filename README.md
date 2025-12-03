@@ -1,4 +1,3 @@
-```markdown
 # Gold Sentiment Index (GSI)
 
 Der **Gold Sentiment Index (GSI)** ist ein kompaktes Forschungsprojekt, das
@@ -502,5 +501,6 @@ Der aktuelle Kern‑Workflow ist:
 Mehr ist nicht erforderlich, um von Rohdaten (Makro‑/Gold‑Headlines) zu einem
 visuellen Gold Sentiment Index zu gelangen.
 ```
+
 
 ```
